@@ -30,11 +30,11 @@ var app = (function() {
 				return this.menuView;
 			},		
 			home:function() {
-				if (!this.homeView) {
+//				if (!this.homeView) {
 					this.homeView = new api.views.home({
 						el:$('#container')
 					});
-				}//end if
+//				}//end if
 				return this.homeView;
 			}
 	};
@@ -45,7 +45,7 @@ var app = (function() {
 		},
 		home:function() {
 			var view = ViewsFactory.home();
-			view.render();
+//			view.render();
 			api.changeContent(view.$el);			
 		}
 	});

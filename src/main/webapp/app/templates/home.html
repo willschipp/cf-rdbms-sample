@@ -5,27 +5,28 @@
 		<div class="col-md-12">
 			<div class="well">
 				<h3>Home <a class="btn btn-info addPerson"><i class="fa fa-plus-circle"></i></a></h3>
-				<hr/>
-				<div class="container" id="persons">
-					<div class="row">
-						<div class="col-md-12">
-							<table class="table">
-							<tr>
-								<% _.each(columns,function(columnName) { %>
-									<th><%= columnName %></th>
-								<% }); %>
-							</tr>
-							<% _.each(rows,function(row) { %>
-							<tr>
-								<% _.each(row,function(value,idx) { %>
-									<td><%= value %></td>
-								<% }); %>
-							</tr>
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table">
+						<tr>
+							<% _.each(columns,function(columnName) { %>
+								<th><%= columnName %></th>
 							<% }); %>
-							</table>
-						</div>
-					</div>			
-				</div>
+						</tr>
+						<% _.each(rows,function(row) { %>
+						<tr>
+							<% _.each(row,function(value,idx) { %>
+								<td><%= value %></td>
+							<% }); %>
+							<!-- add the delete button -->
+							<td>
+								<a class="btn btn-danger deleteRecord" data-id="<%= row.id %>"><i class="fa fa-trash"></i></a>
+							</td>
+						</tr>
+						<% }); %>
+						</table>
+					</div>
+				</div>			
 			</div>
 		</div>
 	</div>

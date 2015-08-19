@@ -1,14 +1,15 @@
 app.views.home = Backbone.View.extend({
 	events: {
 		"click a.addPerson":"addPerson",
-		"submit":"addFormSubmit"
+		"submit":"addFormSubmit",
+		"click a.deleteRecord":"deletePerson"
 	},
 	initialize:function() {
+		_.bindAll(this,'render','addPerson','addFormSubmit');
 		this.model = new app.models.person();
 		this.model.fetchMetadata();	
 		this.collection = new app.collections.persons({model:app.models.Person});
 		this.collection.fetch({success:this.render});
-//		this.findAll = new app.views.findAll({el:$('#persons')});
 	},
 	render:function() {
 		var _this = this;
@@ -21,15 +22,10 @@ app.views.home = Backbone.View.extend({
 			return _this;
 		},'html');		
 	},
-	displayResults:function() {
-		var _this = this;
-		$('#results').remove();//clear off
-		$.get('/app/templates/results.html',function(data) {
-			template = _.template(data);
-			_this.$el.append(template({
-				results:_this.collection.toJSON()
-				}));
-		});
+	deletePerson:function(e) {
+		var dataId = $(e.currentTarget).data('id');
+		var model = this.collection.get(dataId).destroy();
+		this.render();
 	},
 	addPerson:function() {
 		var _this = this;
@@ -47,13 +43,18 @@ app.views.home = Backbone.View.extend({
 		e.preventDefault();
 		var _this = this;
 		//populate this model
+		var model = {}
 		$.each($(e.currentTarget).find('input'),function(idx,value) {
-			_this.model.set(value.name,value.val)
+			model[value.name] = $(value).val();
 		});
-		//save the model
-		this.model.save();
-		//refresh the collection
-		this.collection.fetch({success:this.render()});
+		//add the model
+		this.collection.add(this.model);
+		this.model.save(model,{success:function(data,model) {
+			$('#addPersonModal').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();			
+			_this.render();
+		}});
 		//exit
 		return false;//
 	}

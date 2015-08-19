@@ -29,12 +29,12 @@ public class PersonEndpoint {
 		return personRepository.findAll(); 
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.PUT)
 	public Person save(@RequestBody Person person) {
 		return personRepository.save(person);
 	}
 	
-	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
+	@RequestMapping(value="/{id}",method=RequestMethod.POST)
 	public Person update(@PathVariable("id") String id,@RequestBody Person person) {
 		return personRepository.save(person);
 	}
