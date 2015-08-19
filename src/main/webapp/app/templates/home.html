@@ -6,7 +6,26 @@
 			<div class="well">
 				<h3>Home <a class="btn btn-info addPerson"><i class="fa fa-plus-circle"></i></a></h3>
 				<hr/>
-				<div id="persons"></div>
+				<div class="container" id="persons">
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table">
+							<tr>
+								<% _.each(columns,function(columnName) { %>
+									<th><%= columnName %></th>
+								<% }); %>
+							</tr>
+							<% _.each(rows,function(row) { %>
+							<tr>
+								<% _.each(row,function(value,idx) { %>
+									<td><%= value %></td>
+								<% }); %>
+							</tr>
+							<% }); %>
+							</table>
+						</div>
+					</div>			
+				</div>
 			</div>
 		</div>
 	</div>
@@ -19,20 +38,9 @@
 	      <div class="modal-header">
 	        &nbsp;
 	      </div>
-	      <form method="post">
-	      <div class="modal-body">
-	        <div class="form-group">
-	        	<input type="text" id="username" name="username" class="form-control" placeholder="Username"/>
-	        </div>
-	        <div class="form-group">
-	        	<input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
-	        </div>	        
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-info">Login</button>
-	      </div>
-	      </form>
+	      <div class="modal-body" id="modalContent">
+ 
+ 	      </div>
 	    </div>
 	  </div>
 	</div> 

@@ -1,0 +1,10 @@
+<form class="form">
+	<h4>Add Person</h4>
+	<% _.each(fields,function(field) { %>
+		<div class="form-group">
+			<input class="form-control" type="text" id="<%= field %>" name="<%= field %>" placeholder="<%= field %>"/>
+		</div>
+	<% }); %>
+	<button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+	<button type="submit" class="btn btn-info"><i class="fa fa-save"></i></button>
+</form>

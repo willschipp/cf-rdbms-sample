@@ -2,14 +2,9 @@ app.views.findAll = Backbone.View.extend({
 	initialize:function() {
 		var _this = this;
 		this.collection = new app.collections.persons({model:app.models.Person});
-		this.collection.fetch({success:function() {
-			_this.process();
-			_this.render();
-		}});
 		this.columns = [];
 	},
 	render:function() {
-		console.log(this.columns);
 		var _this = this;
 		$.get('/app/templates/persons.html',function(data) {
 			_this.template = _.template(data);
@@ -20,11 +15,15 @@ app.views.findAll = Backbone.View.extend({
 			return _this;
 		},'html');				
 	},
-	process:function(data) {
+	process:function() {
 		var _this = this;
-		var person = this.collection.first();
-		$.each(person.toJSON(),function(key,value) {
-			_this.columns.push(key);
-		});
+		this.collection.fetch({success:function() {
+			var person = _this.collection.first();
+			$.each(person.toJSON(),function(key,value) {
+				_this.columns.push(key);
+			});
+			console.log('finished');
+			_this.render();
+		}});
 	}
 });
