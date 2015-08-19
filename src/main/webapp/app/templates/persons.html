@@ -1,0 +1,21 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+			<tr>
+				<% _.each(columns,function(columnName) { %>
+					<th><%= columnName %></th>
+				<% }); %>
+			</tr>
+			<% _.each(rows,function(row) { %>
+			<tr>
+				<% _.each(row,function(value,idx) { %>
+					<td><%= value %></td>
+				<% }); %>
+			</tr>
+			<% }); %>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Web App</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-material-design/0.3.0/css/material-fullpalette.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-material-design/0.3.0/css/material.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet">
+    
+    <link href="/webjars/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="/index.html"  onclick = $("#menu-close").click(); >Home</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Simple Web App</h1>
+            <br>
+            <a href="#" data-toggle="modal" data-target="#loginModal" class="btn btn-info">Login</a>
+        </div>
+    </header>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        &nbsp;
+	      </div>
+	      <form method="post">
+	      <div class="modal-body">
+	        <div class="form-group">
+	        	<input type="text" id="username" name="username" class="form-control" placeholder="Username"/>
+	        </div>
+	        <div class="form-group">
+	        	<input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+	        </div>	        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-info">Login</button>
+	      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>  
+
+	<!-- jQuery -->
+    <script src="/webjars/jquery/2.1.4/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+    <script src="/webjars/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    </script>
+
+</body>
+
+</html>
